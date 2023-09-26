@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { getLaunchBy, getLatestLaunches } from '../../services/spacesx'
+
+const { id } = Astro.params // parametro ID
+
+export const prerender = false // server
+
+let launch: any // Almacen de la informacion Api 
+
+if (id) {
+    launch = await getLaunchBy( {id} ) // peticion del launch for id
+}
+
+---
+
+<Layout title=`${id}`>
+    <article class="flex gap-y-4 flex-col">
+        <img style={{viewTransitionName: `launch-${id}`}} class="w-52 h-auto" src={launch?.links?.patch.small} alt={launch?.name}>
+        <h2 class="text-4xl text-white font-bold">Launch #{launch?.flight_number}</h2>
+        <p class="text-lg">{launch?.details}</p>
+    </article>
+</Layout>
+

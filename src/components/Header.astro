@@ -1,0 +1,43 @@
+---
+// componentes astro
+import HeaderButton from "./HeaderButton.astro";
+// icons svg
+import OldestIcon from '../icons/OldestIcon.astro'
+import AboutIcon from '../icons/AboutIcon.astro'
+import LastLaunchIcon from '../icons/LastLaunchIcon.astro'
+import { Counter } from "./Counter";
+
+
+---
+
+<header class='py-8 px-4 mx-auto max-w-xl lg:py-16 lg:px-6'>
+    <div class='mx-auto text-center mb-8 lg:mb-16'>
+        <h2 class='mb-4 text-5xl tracking-tight font-extrabold text-white'>
+            SpaceX Launches
+        </h2>
+        <p class='font-light text-gray-500 sm:text-xl dark:text-gray-400'>
+            All the information about SpaceX launches
+        </p>
+    </div>
+
+    <Counter transition:persist client:visible/>
+
+    <nav
+        class='flex flex-col items-center justify-between w-full text-center md:flex-row'
+    >
+        <HeaderButton class='text-white' href='/'>
+                <LastLaunchIcon/>
+                Últimos lanzamientos
+        </HeaderButton>
+
+        <HeaderButton class='text-white' href='/about'>
+                <AboutIcon/>
+                Sobre el proyecto
+        </HeaderButton>
+        
+        <HeaderButton class='text-white' href='/'>
+                <OldestIcon/>
+                Los más viejos
+        </HeaderButton>
+    </nav>
+</header>
